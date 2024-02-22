@@ -9,4 +9,4 @@ class Equation:
 
     def f(self,n, x):
         d = self.diff.calculate(n,x)
-        return d-n(x)
+        return d-n(x)+1
