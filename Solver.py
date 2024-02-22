@@ -22,7 +22,7 @@ class Solver:
                 print(f"nr kroku {i} / {epochs} {p}% strata = {self.__loss__().numpy()}")
 
     def calculate(self,x):
-        return self.n(x)+1
+        return self.n(x)
 
     def __loss__(self):
         return tensorflow.reduce_mean(self.loss.calculate(self.calculate))
