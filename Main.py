@@ -5,9 +5,6 @@ from Plot import Plot
 from Solver import Solver
 from functions.SimpleEquation import Equation
 
-def f(x):
-    return tensorflow.exp(x)
-
 
 if __name__ == '__main__':
     startRange = 0
