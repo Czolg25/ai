@@ -3,9 +3,10 @@ import tensorflow
 import Loss
 
 class Solver:
-    def __init__(self,learning_rate,x,loss_function):
+    def __init__(self,learning_rate,x,equation):
         self.x = x
-        self.loss = Loss.Loss(loss_function,x)
+        self.equation = equation
+        self.loss = Loss.Loss(equation.f,x)
 
         self.n = tensorflow.keras.Sequential([tensorflow.keras.layers.Dense(units=32, activation='exponential', dtype='float64'),
                          tensorflow.keras.layers.Dense(units=1, activation='linear', dtype='float64')])
@@ -22,7 +23,7 @@ class Solver:
                 print(f"nr kroku {i} / {epochs} {p}% strata = {self.__loss__().numpy()}")
 
     def calculate(self,x):
-        return self.n(x)
+        return x*self.n(x)+self.equation.term_function(x)
 
     def __loss__(self):
         return tensorflow.reduce_mean(self.loss.calculate(self.calculate))
